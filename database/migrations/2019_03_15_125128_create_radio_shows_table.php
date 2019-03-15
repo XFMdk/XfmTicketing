@@ -17,6 +17,7 @@ class CreateRadioShowsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->integer('season')->nullable();
+            $table->boolean('active')->default(false);
             $table->bigInteger('user_id')->unsigned()->nullable();
             $table->timestamps();
 

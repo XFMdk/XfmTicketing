@@ -18,3 +18,4 @@
 Auth::routes();
 // Route::get("/{any}", "SpaController@index")->where("any", ".*");
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/shows', 'RadioShowController@index')->name('shows');

@@ -8,7 +8,12 @@ class RadioShow extends Model
 {
     protected $fillable = [];
 
-    public function Episodes()
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+    public function episodes()
     {
         return $this->hasMany('App\Episode');
     }
