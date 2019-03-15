@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class RadioShow extends Model
 {
-    protected $fillable = [];
+    protected $fillable = ['name', 'active', 'user_id', 'season'];
 
     public function user()
     {
