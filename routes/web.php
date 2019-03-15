@@ -20,3 +20,6 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/shows', 'RadioShowController@index')->name('shows');
 Route::post('/shows', 'RadioShowController@create')->name('createShow');
+
+Route::get('/shows/{showId}/episodes', 'EpisodeController@index');
+Route::post('/shows/{showId}/episodes', 'EpisodeController@create');
