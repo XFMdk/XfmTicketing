@@ -21,7 +21,7 @@ class RadioShowController extends Controller
             'name' => 'required|unique:radio_shows|max:255',
             'user_id' => 'required|exists:users,id',
             'active' => 'required',
-            'description' => 'required|max:512',
+            'description' => 'max:512',
         ]);
 
         RadioShow::create([

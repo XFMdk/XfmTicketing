@@ -14,6 +14,7 @@
                             <tr>
                                 <th scope="col">Name</th>
                                 <th scope="col">Episode</th>
+                                <th scope="col">Status</th>
                                 <th scope="col">Description</th>
                                 {{-- <th scope="col">Responsible</th>
                                 <th scope="col">Season</th> --}}
@@ -29,6 +30,7 @@
                                     @else
                                         <td>N/A</td>
                                     @endif
+                                    <td>{{ $episode->status }}</td>
                                     <td style="width: 50%">{{ $episode->description }}</td>
                                 </tr>
                             @empty
@@ -48,6 +50,13 @@
                 <div class="card-body">
                     <form action="/shows/{{ $show->id }}/episodes" method="POST">
                         @csrf
+                        <div class="form-group">
+                            <select name="status" class="form-control">
+                                @foreach ($statuses as $status)
+                                    <option value="{{ $status['key'] }}">{{ $status['value'] }}</option>
+                                @endforeach
+                            </select>
+                        </div>
                         <div class="form-group">
                             <label for="createEpisodeDescription"></label>
                             <textarea name="description" id="createEpisodeDescription" rows="10" class="form-control"></textarea>

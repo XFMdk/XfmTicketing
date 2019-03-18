@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Episode;
 use App\RadioShow;
 use Illuminate\Http\Request;
+use App\Helpers\EpisodeStatus;
 
 class EpisodeController extends Controller
 {
@@ -12,14 +13,21 @@ class EpisodeController extends Controller
     {
         $show = RadioShow::find($showId);
         $episodes = Episode::where('radio_show_id', '=', $showId)->get();
+        $statuses = EpisodeStatus::ALL;
 
-        return view('episode.index', ['episodes' => $episodes, 'show' => $show ]);
+        foreach($episodes as $episode)
+        {
+            $episode->status = EpisodeStatus::find($episode->status);
+        }
+
+        return view('episode.index', [ 'episodes' => $episodes, 'show' => $show, 'statuses' => $statuses ]);
     }
 
     public function create(Request $request, $showId)
     {
         $request->validate([
-            'description' => 'required|max:512',
+            'status' => 'required',
+            'description' => 'max:512',
         ]);
 
         $show = RadioShow::find($showId);
@@ -48,6 +56,7 @@ class EpisodeController extends Controller
             'episode_number' => $episodeNumber,
             'radio_show_id' => $showId,
             'description' => $request->description,
+            'status' => $request->status,
         ]);
 
         return redirect('shows/'.$showId.'/episodes');

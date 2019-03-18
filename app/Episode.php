@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Episode extends Model
 {
-    protected $fillable = ['name', 'episode_number', 'radio_show_id', 'description'];
+    protected $fillable = ['name', 'episode_number', 'radio_show_id', 'description', 'status'];
 
     public function RadioShow()
     {
