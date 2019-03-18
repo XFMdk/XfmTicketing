@@ -18,6 +18,7 @@ class CreateEpisodesTable extends Migration
             $table->string('name');
             $table->integer('episode_number')->unsigned()->nullable();
             $table->bigInteger('radio_show_id')->unsigned();
+            $table->string('description', 512);
             $table->timestamps();
 
             $table->foreign('radio_show_id')

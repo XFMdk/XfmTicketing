@@ -14,6 +14,7 @@
                             <tr>
                                 <th scope="col">Name</th>
                                 <th scope="col">Episode</th>
+                                <th scope="col">Description</th>
                                 {{-- <th scope="col">Responsible</th>
                                 <th scope="col">Season</th> --}}
                                 {{-- <th></th> --}}
@@ -28,6 +29,7 @@
                                     @else
                                         <td>N/A</td>
                                     @endif
+                                    <td style="width: 50%">{{ $episode->description }}</td>
                                 </tr>
                             @empty
                                 No current shows.
@@ -46,6 +48,10 @@
                 <div class="card-body">
                     <form action="/shows/{{ $show->id }}/episodes" method="POST">
                         @csrf
+                        <div class="form-group">
+                            <label for="createEpisodeDescription"></label>
+                            <textarea name="description" id="createEpisodeDescription" rows="10" class="form-control"></textarea>
+                        </div>
                         <button type="submit" class="btn btn-primary">Save</button>
                     </form>
                 </div>

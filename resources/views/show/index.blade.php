@@ -16,6 +16,7 @@
                                 <th scope="col">Responsible</th>
                                 <th scope="col">Season</th>
                                 <th scope="col">Episodes</th>
+                                <th scope="col">Description</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -34,6 +35,7 @@
                                     @else
                                         <td>N/A</td>
                                     @endif
+                                    <td style="width: 30%;">{{ $show->description }}</td>
                                     <td><a href="/shows/{{ $show->id }}/episodes">Go to show</a></td>
                                 </tr>
                             @empty
@@ -72,6 +74,10 @@
                         <div class="form-check">
                             <input type="checkbox" name="active" id="createShowActive" class="form-check-input">
                             <label for="createShowActive">Active</label>
+                        </div>
+                        <div class="form-group">
+                            <label for="createShowDescription"></label>
+                            <textarea name="description" id="createShowDescription" rows="10" class="form-control"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Save</button>
                     </form>

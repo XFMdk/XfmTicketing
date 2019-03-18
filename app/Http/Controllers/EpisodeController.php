@@ -18,6 +18,10 @@ class EpisodeController extends Controller
 
     public function create(Request $request, $showId)
     {
+        $request->validate([
+            'description' => 'required|max:512',
+        ]);
+
         $show = RadioShow::find($showId);
 
         $episodeNumber = 1;
@@ -43,6 +47,7 @@ class EpisodeController extends Controller
             'name' => $name,
             'episode_number' => $episodeNumber,
             'radio_show_id' => $showId,
+            'description' => $request->description,
         ]);
 
         return redirect('shows/'.$showId.'/episodes');

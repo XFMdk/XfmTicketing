@@ -21,6 +21,7 @@ class RadioShowController extends Controller
             'name' => 'required|unique:radio_shows|max:255',
             'user_id' => 'required|exists:users,id',
             'active' => 'required',
+            'description' => 'required|max:512',
         ]);
 
         RadioShow::create([
@@ -28,6 +29,7 @@ class RadioShowController extends Controller
             'user_id' => $request->user_id,
             'season' => $request->season,
             'active' => $request->active ? 1 : 0,
+            'description' => $request->description,
         ]);
 
         return redirect('shows');
